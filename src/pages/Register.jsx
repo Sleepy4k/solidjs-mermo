@@ -36,7 +36,7 @@ function Register() {
       role: "user"
     }
 
-    axios.post("http://localhost:7004/register", user)
+    axios.post("http://0.0.0.0:7004/register", user)
       .then((res) => {
         const data = res.data
 

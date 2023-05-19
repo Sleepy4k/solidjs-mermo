@@ -22,7 +22,7 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault()
     
-    axios.post("http://localhost:7004/login", value())
+    axios.post("http://0.0.0.0:7004/login", value())
       .then((res) => {
         const data = res.data
 
@@ -50,7 +50,8 @@ function Login() {
   }
 
   const handleLogin = (user) => {
-    setCurrentUser(user)
+    setCurrentUser(user[0])
+    document.cookie = `auth_jwt_secret=${user[0].token}; path=/;`
     navigate("/")
   }
 
@@ -70,7 +71,7 @@ function Login() {
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" onchange={handleChange}></input><br/>
     
-        <input type="submit" value="Register" onclick={handleSubmit}></input>
+        <input type="submit" value="Login" onclick={handleSubmit}></input>
       </form>
     </>
   )
