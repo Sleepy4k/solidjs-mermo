@@ -1,5 +1,5 @@
-import './auth.module.css'
 import axios from 'axios'
+import './auth.module.css'
 import { createSignal } from 'solid-js'
 import { useNavigate } from "@solidjs/router"
 import { getOrCreateStorage } from "../utils/LocalStorage"

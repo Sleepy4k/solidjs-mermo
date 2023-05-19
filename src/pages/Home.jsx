@@ -69,11 +69,18 @@ function Home() {
       })
   }
 
+  if (!user()) {
+    navigate("/login")
+
+    return
+  }
+
   return (
     <div class="container">
       <Sidebar />
       <div class="content">
         <h1>Welcome to my website</h1>
+        <p>ID : {user().id}</p>
         <p>Name : {user().username}</p>
         <p>Role : {user().role}</p>
         <button onClick={handleLogout}>Logout</button>

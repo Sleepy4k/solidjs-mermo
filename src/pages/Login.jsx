@@ -1,5 +1,5 @@
-import './auth.module.css'
 import axios from 'axios'
+import './auth.module.css'
 import { createSignal } from 'solid-js'
 import { useNavigate } from "@solidjs/router"
 import { getOrCreateStorage } from "../utils/LocalStorage"
@@ -29,7 +29,7 @@ function Login() {
         if (data.status == "OK") {
           alert("Login successful")
 
-          handleLogin(data.data)
+          handleLogin(data.data[0])
         } else if (data.status == "ERROR") {
           alert("Login failed due " + data.info)
         } else {
@@ -50,8 +50,12 @@ function Login() {
   }
 
   const handleLogin = (user) => {
-    setCurrentUser(user[0])
-    document.cookie = `auth_jwt_secret=${user[0].token}; path=/;`
+    setCurrentUser({
+      id: user.id,
+      username: user.username,
+      role: user.role,
+    })
+    // document.cookie = `auth_jwt_secret=${user[0].token}; path=/;`
     navigate("/")
   }
 
