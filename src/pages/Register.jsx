@@ -1,5 +1,5 @@
-import axios from 'axios'
 import './auth.module.css'
+import Api from "../utils/Api"
 import { createSignal } from 'solid-js'
 import { useNavigate } from "@solidjs/router"
 import { getOrCreateStorage } from "../utils/LocalStorage"
@@ -36,7 +36,7 @@ function Register() {
       role: "user"
     }
 
-    axios.post("http://0.0.0.0:7004/register", user)
+    Api.post("/register", user)
       .then((res) => {
         const data = res.data
 
@@ -49,8 +49,6 @@ function Register() {
         } else {
           alert("Something went wrong")
         }
-
-        console.log(data);
       })
       .catch((err) => {
         const msg = err.message
@@ -65,7 +63,6 @@ function Register() {
 
   if (currentUser()) {
     navigate("/")
-
     return
   }
 

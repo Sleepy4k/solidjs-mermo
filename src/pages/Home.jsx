@@ -1,9 +1,9 @@
-import axios from "axios"
 import "./home.module.css"
+import Api from "../utils/Api"
 import { createEffect } from "solid-js"
 import Sidebar from "../components/Sidebar"
 import { useNavigate } from "@solidjs/router"
-import { getOrCreateStorage } from "../utils/LocalStorage"
+import { getOrCreateStorage, deleteStorage } from "../utils/LocalStorage"
 
 function Home() {
   const navigate = useNavigate()
@@ -18,13 +18,13 @@ function Home() {
   })
 
   const handleLogout = () => {
-    axios.get("http://0.0.0.0:7004/logout")
+    Api.post("/logout", null)
       .then((res) => {
         const data = res.data
 
         if (data.status == "OK") {
           alert("Logout successful")
-
+          deleteStorage("user")
           navigate("/login")
         } else if (data.status == "ERROR") {
           alert("Logout failed due " + data.info)
@@ -44,11 +44,9 @@ function Home() {
   }
 
   const handleData = () => {
-    axios.get("http://0.0.0.0:7004/product")
+    Api.get("/product")
       .then((res) => {
         const data = res.data
-
-        console.log(data);
 
         if (data.status == "OK") {
           alert("Data: " + JSON.stringify(data.data))
@@ -71,7 +69,6 @@ function Home() {
 
   if (!user()) {
     navigate("/login")
-
     return
   }
 

@@ -1,5 +1,5 @@
-import axios from 'axios'
 import './auth.module.css'
+import Api from "../utils/Api"
 import { createSignal } from 'solid-js'
 import { useNavigate } from "@solidjs/router"
 import { getOrCreateStorage } from "../utils/LocalStorage"
@@ -22,7 +22,7 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault()
     
-    axios.post("http://0.0.0.0:7004/login", value())
+    Api.post("/login", value())
       .then((res) => {
         const data = res.data
 
@@ -35,8 +35,6 @@ function Login() {
         } else {
           alert("Something went wrong")
         }
-
-        console.log(data);
       })
       .catch((err) => {
         const msg = err.message
@@ -55,13 +53,11 @@ function Login() {
       username: user.username,
       role: user.role,
     })
-    // document.cookie = `auth_jwt_secret=${user[0].token}; path=/;`
     navigate("/")
   }
 
   if (currentUser()) {
     navigate("/")
-
     return
   }
 
