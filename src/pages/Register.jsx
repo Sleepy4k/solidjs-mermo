@@ -36,7 +36,7 @@ function Register() {
       role: "user"
     }
 
-    Api.post("/register", user)
+    Api.post("/register", user, { withCredentials: false })
       .then((res) => {
         const data = res.data
 
