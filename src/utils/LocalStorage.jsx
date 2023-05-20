@@ -14,4 +14,8 @@ function getOrCreateStorage(key, defaultValue, storage = localStorage) {
     return [value, setValueAndStore];
 }
 
-export { getOrCreateStorage };
+function deleteStorage(key, storage = localStorage) {
+    storage.removeItem(key);
+}
+
+export { getOrCreateStorage, deleteStorage };
