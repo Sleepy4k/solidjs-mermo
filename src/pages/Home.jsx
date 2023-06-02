@@ -22,12 +22,12 @@ function Home() {
       .then((res) => {
         const data = res.data
 
-        if (data.status == "OK") {
+        if (data.status == "success") {
           alert("Logout successful")
           deleteStorage("user")
           navigate("/login")
-        } else if (data.status == "ERROR") {
-          alert("Logout failed due " + data.info)
+        } else if (data.status == "error") {
+          alert("Logout failed due " + data.message)
         } else {
           alert("Something went wrong")
         }
@@ -48,10 +48,10 @@ function Home() {
       .then((res) => {
         const data = res.data
 
-        if (data.status == "OK") {
+        if (data.status == "success") {
           alert("Data: " + JSON.stringify(data.data))
-        } else if (data.status == "ERROR") {
-          alert("Data failed due " + data.info)
+        } else if (data.status == "error") {
+          alert("Data failed due " + data.message)
         } else {
           alert("Something went wrong")
         }

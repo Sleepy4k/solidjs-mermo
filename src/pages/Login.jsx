@@ -26,12 +26,12 @@ function Login() {
       .then((res) => {
         const data = res.data
 
-        if (data.status == "OK") {
+        if (data.status == "success") {
           alert("Login successful")
 
           handleLogin(data.data[0])
-        } else if (data.status == "ERROR") {
-          alert("Login failed due " + data.info)
+        } else if (data.status == "error") {
+          alert("Login failed due " + data.message)
         } else {
           alert("Something went wrong")
         }

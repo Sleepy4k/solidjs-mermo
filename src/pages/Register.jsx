@@ -40,12 +40,12 @@ function Register() {
       .then((res) => {
         const data = res.data
 
-        if (data.status == "OK") {
-          alert("Register successful")
+        if (data.status == "success") {
+          alert("Login successful")
 
-          navigate("/login")
-        } else if (data.status == "ERROR") {
-          alert("Register failed due " + data.info)
+          handleLogin(data.data[0])
+        } else if (data.status == "error") {
+          alert("Login failed due " + data.message)
         } else {
           alert("Something went wrong")
         }
