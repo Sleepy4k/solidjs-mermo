@@ -3,7 +3,7 @@ import { useNavigate } from "@solidjs/router";
 import { Component, createEffect } from "solid-js";
 import { getStorage } from "../utils/LocalStorage";
 
-const AuthLayout: Component<{ children: any[] }> = (props: any) => {
+const AuthLayout: Component<{ children: any }> = (props: any) => {
     const navigate = useNavigate();
 
     createEffect(() => {
@@ -11,8 +11,6 @@ const AuthLayout: Component<{ children: any[] }> = (props: any) => {
         const isUserLoggedIn = checkCookie("auth_jwt_secret");
 
         if (!isUserLoggedIn || !user) {
-            console.log("AuthLayout: navigate to /login");
-            
             navigate("/login");
             return;
         }
