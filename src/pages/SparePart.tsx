@@ -1,9 +1,9 @@
 import Api from "../utils/Api";
+import { createSignal } from "solid-js";
 import type { Component } from "solid-js";
 import Sidebar from "../components/Sidebar";
 import GridData from "../components/GridData";
 import AuthLayout from "../layouts/AuthLayout";
-import { createSignal, createEffect } from "solid-js";
 
 const SparePart: Component = () => {
   const [data, setData] = createSignal([]);

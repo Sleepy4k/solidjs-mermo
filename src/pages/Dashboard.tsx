@@ -2,7 +2,7 @@ import Api from "../utils/Api";
 import Sidebar from "../components/Sidebar";
 import PieChart from "../components/PieChart";
 import AuthLayout from "../layouts/AuthLayout";
-import { Component, createSignal, createEffect } from "solid-js";
+import { Component, createSignal } from "solid-js";
 
 const Dashboard: Component = () => {
   const [data, setData] = createSignal([]);

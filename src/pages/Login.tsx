@@ -50,7 +50,7 @@ const Login: Component = () => {
   }
 
   return (
-    <GuestLayout>
+    <GuestLayout onFinish={() => {}}>
       <></>
       <div class="relative flex flex-col justify-center min-h-screen overflow-hidden">
         <div class="w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-rose-600/40 ring ring-2 ring-purple-600 lg:max-w-xl">
