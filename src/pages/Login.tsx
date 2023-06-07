@@ -1,5 +1,5 @@
 import Api from "../utils/Api";
-import GuestLayout from "../layouts/AuthLayout";
+import GuestLayout from "../layouts/GuestLayout";
 import { useNavigate, A } from "@solidjs/router";
 import { setStorage } from "../utils/LocalStorage";
 import { createSignal, Component } from "solid-js";
@@ -51,6 +51,7 @@ const Login: Component = () => {
 
   return (
     <GuestLayout>
+      <></>
       <div class="relative flex flex-col justify-center min-h-screen overflow-hidden">
         <div class="w-full p-6 m-auto bg-white rounded-md shadow-xl shadow-rose-600/40 ring ring-2 ring-purple-600 lg:max-w-xl">
           <h1 class="text-3xl font-semibold text-center text-purple-700 uppercase">{APP_NAME} LOGIN</h1>
