@@ -1,6 +1,6 @@
 import "./index.css";
 import { Component, lazy } from "solid-js";
-import { Routes, Route, A } from "@solidjs/router";
+import { Routes, Route } from "@solidjs/router";
 
 const Login = lazy(() => import("./pages/Login"));
 const Product = lazy(() => import("./pages/Product"));

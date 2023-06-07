@@ -1,8 +1,7 @@
-import { Component, createResource } from "solid-js";
-
 import AgGridSolid from "ag-grid-solid";
 import { ColDef } from "ag-grid-community";
 import "ag-grid-community/styles/ag-grid.css";
+import { Component, createResource } from "solid-js";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 
 const GridData: Component<{ data: any[], field: any[] }> = (props) => {

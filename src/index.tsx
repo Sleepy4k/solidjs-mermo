@@ -4,6 +4,7 @@ import { render } from 'solid-js/web';
 import { Router, hashIntegration } from '@solidjs/router';
 
 const root = document.getElementById('root');
+const title = import.meta.env.VITE_APP_NAME || 'SolidJS';
 
 if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
   throw new Error(
@@ -11,9 +12,11 @@ if (import.meta.env.DEV && !(root instanceof HTMLElement)) {
   );
 }
 
+document.title = title + ' Gateway';
+
 render(() => (
-    <Router source={hashIntegration()}>
-        <App />
-    </Router>
+  <Router source={hashIntegration()}>
+    <App />
+  </Router>
 ), document.getElementById('root') as HTMLElement);
 
