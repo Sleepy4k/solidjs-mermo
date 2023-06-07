@@ -1,6 +1,6 @@
+import { onMount, Component } from "solid-js";
 import * as am4core from "@amcharts/amcharts4/core";
 import * as am4charts from "@amcharts/amcharts4/charts";
-import { onMount, Component } from "solid-js";
 import am4themes_animated from "@amcharts/amcharts4/themes/animated";
 
 const PieChart: Component<{ name: string, data: any[] }> = (props) => {
@@ -38,11 +38,7 @@ const PieChart: Component<{ name: string, data: any[] }> = (props) => {
     chart.legend.valueLabels.template.text = "{value.value}";
   });
 
-  return (
-    <>
-      <div id={tag} style={{ height: "500px", width: "100%" }}></div>
-    </>
-  );
+  return <div id={tag} style={{ height: "500px", width: "100%" }}></div>;
 };
 
 export default PieChart;
