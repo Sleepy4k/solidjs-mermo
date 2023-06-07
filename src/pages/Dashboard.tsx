@@ -8,7 +8,7 @@ const Dashboard: Component = () => {
   const [data, setData] = createSignal([]);
   const [loading, setLoading] = createSignal(true);
 
-  createEffect(() => {
+  const afterFinish = () => {
     Api.get("product")
       .then((res) => {
         const value = res.data;
@@ -32,10 +32,10 @@ const Dashboard: Component = () => {
           alert(msg)
         }
       })
-  });
+  }
 
   return (
-    <AuthLayout>
+    <AuthLayout onFinish={() => afterFinish()}>
       <Sidebar />
       <div class="p-4 sm:ml-64">
         <h1>Dashboard</h1>

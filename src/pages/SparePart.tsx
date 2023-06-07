@@ -10,7 +10,7 @@ const SparePart: Component = () => {
   const [loading, setLoading] = createSignal(true);
   const field = [{ field: "id" }, { field: "name" }, { field: "price" }];
 
-  createEffect(() => {
+  const afterFinish = () => {
     Api.get("spare_part")
       .then((res) => {
         const value = res.data;
@@ -34,10 +34,10 @@ const SparePart: Component = () => {
           alert(msg)
         }
       })
-  });
+  }
 
   return (
-    <AuthLayout>
+    <AuthLayout onFinish={() => afterFinish()}>
       <Sidebar />
       <div class="p-4 sm:ml-64">
         {loading() ? null : <GridData data={data()} field={field} />}

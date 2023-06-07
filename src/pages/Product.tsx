@@ -10,7 +10,7 @@ const Product: Component = () => {
   const [loading, setLoading] = createSignal(true);
   const field = [{ field: "id" }, { field: "name" }, { field: "price" }, { field: "amount" }];
 
-  createEffect(() => {
+  const afterFinish = () => {
     Api.get("product")
       .then((res) => {
         const value = res.data;
@@ -34,10 +34,10 @@ const Product: Component = () => {
           alert(msg)
         }
       })
-  });
+  }
 
   return (
-    <AuthLayout>
+    <AuthLayout onFinish={() => afterFinish()}>
       <Sidebar />
       <div class="p-4 sm:ml-64">
         {loading() ? null : <GridData data={data()} field={field} />}
