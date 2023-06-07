@@ -2,6 +2,7 @@ import "./index.css";
 import { Component, lazy } from "solid-js";
 import { Routes, Route } from "@solidjs/router";
 
+const User = lazy(() => import("./pages/User"));
 const Login = lazy(() => import("./pages/Login"));
 const Product = lazy(() => import("./pages/Product"));
 const Register = lazy(() => import("./pages/Register"));
@@ -12,6 +13,7 @@ const App: Component = () => {
   return (
     <Routes>
       <Route path="/" component={Dashboard} />
+      <Route path="/user" component={User} />
       <Route path="/login" component={Login} />
       <Route path="/product" component={Product} />
       <Route path="/register" component={Register} />
