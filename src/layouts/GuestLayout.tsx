@@ -3,24 +3,24 @@ import { useNavigate } from "@solidjs/router";
 import { Component, createEffect } from "solid-js";
 import { getStorage } from "../utils/LocalStorage";
 
-const GuestLayout: Component<{ children: any }> = (props: any) => {
-    const navigate = useNavigate();
+const GuestLayout: Component<{ children: any[] }> = (props: any) => {
+  const navigate = useNavigate();
 
-    createEffect(() => {
-        const user = getStorage("user");
-        const isUserLoggedIn = checkCookie("auth_jwt_secret");
+  createEffect(() => {
+    const user = getStorage("user");
+    const isUserLoggedIn = checkCookie("auth_jwt_secret");
 
-        if (isUserLoggedIn || user) {
-            navigate("/");
-            return;
-        }
-    });
+    if (isUserLoggedIn || user) {
+      navigate("/");
+      return;
+    }
+  });
 
-    return (
-        <>
-            {props.children}
-        </>
-    )
+  return (
+    <>
+      {props.children}
+    </>
+  )
 }
 
 export default GuestLayout;
